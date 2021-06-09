@@ -2,6 +2,24 @@ var d = document;
 
 d.getElementById('logout').addEventListener('click', logOutFunc);
 
+window.onload = function(){
+    getData();
+    getActiveUsers();
+}
+
+function getActiveUsers(){
+    var xhr = new XMLHttpRequest();
+
+    xhr.open("GET", "getActiveUsers.php", true);
+
+    xhr.onreadystatechange = function(){
+        if(this.readyState == 4 && this.status == 200){
+            console.log(this.responseText);
+        }
+    }
+    xhr.send();
+}
+
 function getData(){                                             //loads table at the start
     var xhr = new XMLHttpRequest();
 
@@ -61,6 +79,7 @@ function logOutFunc(){
 
     xhr.onreadystatechange = function(){
         if(this.readyState == 4 && this.status == 200){
+            console.log(this.responseText);
             location.replace('index.php');
         }
     }

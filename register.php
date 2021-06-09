@@ -28,6 +28,8 @@ if(!in_array($username, $id)){
     $newPW = $xml->createElement("password", $password);
     $newFname = $xml->createElement("firstName", $fname);
     $newLname = $xml->createElement("lastName", $lname);
+    $newPic = $xml->createElement("profilePic", "images/defaultImg.png");
+    $newStatus = $xml->createElement("status", "offline");
     //set Attribute
     $newUser->setAttribute("username", $username);
     //appending

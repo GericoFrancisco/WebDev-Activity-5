@@ -53,7 +53,7 @@ if(isset($_SESSION['users'])){
     </style>
     
 </head>
-<body onload="getData();" >
+<body >
     <div id="header">
         <button id="logout" >Log Out</button>
     </div>
