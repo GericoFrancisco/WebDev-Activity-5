@@ -50,6 +50,11 @@ if(isset($_SESSION['users'])){
         #details{
             vertical-align: top;
         }
+        #user-panel{
+            background-color: rgb(76, 235, 129);
+            height: 200px;
+            width: 400px;
+        }
     </style>
     
 </head>
@@ -58,8 +63,8 @@ if(isset($_SESSION['users'])){
         <button id="logout" >Log Out</button>
     </div>
     <div id="table"></div>
-   <div id="modal">
-   </div>
+    <div id="modal"></div>
+    <div id="user-panel">Active Users:</div>
     <script src="table.js"></script>
 </body>
 </html>

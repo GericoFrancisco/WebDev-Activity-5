@@ -36,6 +36,8 @@ if(!in_array($username, $id)){
     $newUser->appendChild($newPW);
     $newUser->appendChild($newFname);
     $newUser->appendChild($newLname);
+    $newUser->appendChild($newPic);
+    $newUser->appendChild($newStatus);
 
     $xml->getElementsByTagName("users")[0]->appendChild($newUser);
     $xml->save("users.xml");

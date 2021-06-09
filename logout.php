@@ -1,6 +1,7 @@
 <?php
     session_start();
     if(isset($_SESSION["activeUsers"])){
+        echo $_SESSION["activeUsers"];
         setOffline($_SESSION["activeUsers"]);
     }else{
         echo "nothing";

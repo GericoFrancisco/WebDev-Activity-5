@@ -14,7 +14,7 @@ function getActiveUsers(){
 
     xhr.onreadystatechange = function(){
         if(this.readyState == 4 && this.status == 200){
-            console.log(this.responseText);
+            d.getElementById("user-panel").innerHTML = this.responseText;
         }
     }
     xhr.send();
@@ -85,3 +85,5 @@ function logOutFunc(){
     }
     xhr.send();
 }
+
+
