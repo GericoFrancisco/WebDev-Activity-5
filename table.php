@@ -55,6 +55,24 @@ if(isset($_SESSION['users'])){
             height: 200px;
             width: 400px;
         }
+        #chat{
+            background-color: white;
+            height: 400px;
+            width: 300px;
+            display: none;
+        }
+        #name-header{
+            background-color: black;
+            color: white;
+            width: 100%;
+            height: 50px;
+        }
+        #close-chat-button{
+            position: relative;
+            top: 5px;
+            right: 5px;
+            color: white;
+        }
     </style>
 </head>
 <body >
@@ -65,6 +83,16 @@ if(isset($_SESSION['users'])){
     <form id="bside">
         <div id="table"></div>
         <div id="user-panel">Active Users:</div>
+        <div id="chat">
+            <div id="name-header">
+                <!-- <div id="close-chat-button">&times;</div> -->
+            </div>
+            <div id="conversation"></div>
+            <div id="chat-input">
+                <input type="text" name="chat-message" id="chat-message">
+                <button id="send-message">Send</button>
+            </div>
+        </div>
         <script src="table.js"></script>
     </form>
 </body>

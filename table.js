@@ -7,6 +7,16 @@ window.onload = function(){
     getActiveUsers();
 }
 
+setInterval(function(){
+    getActiveUsers();
+}, 3000);
+
+function printUSN(usn){
+    console.log("usn here "+usn);
+    d.getElementById("chat").style.display = "block";
+    d.getElementById("name-header").innerHTML = usn;
+}
+
 function getActiveUsers(){
     var xhr = new XMLHttpRequest();
 
