@@ -56,15 +56,16 @@ if(isset($_SESSION['users'])){
             width: 400px;
         }
     </style>
-    
 </head>
 <body >
     <div id="header">
         <button id="logout" >Log Out</button>
     </div>
-    <div id="table"></div>
     <div id="modal"></div>
-    <div id="user-panel">Active Users:</div>
-    <script src="table.js"></script>
+    <form id="bside">
+        <div id="table"></div>
+        <div id="user-panel">Active Users:</div>
+        <script src="table.js"></script>
+    </form>
 </body>
 </html>

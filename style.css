@@ -6,23 +6,22 @@ body{
     margin: 0;
 }
 table{
-    width: 90%;
-    margin-left: auto;
-    margin-right: auto;
+    width: 60%;
+    margin-left: 5%;
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
     border-radius: 7px;
     text-align: center;
     background-color: white;
 }
 tr,td,th{
-    padding: 10px;
+    padding: 5px;
 }
 tr:hover:not(.ltable){
     background-color: #4450ce;
     color: white;
 }
 td{
-    font-size: 19px;
+    font-size: 17px;
 }
 tr{
     font-size: 15px;
@@ -46,4 +45,7 @@ tr:nth-child(even){
     border-radius: 1em;
     font-size: 15px;
     border: none;
+}
+#bside{
+    display: inline-block;
 }
