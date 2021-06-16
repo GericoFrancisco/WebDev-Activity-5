@@ -13,7 +13,7 @@ foreach($userList as $user){
     $img = $user->getElementsByTagName("profilePic")[0]->nodeValue;
     if($status == "online"){
         if($_SESSION["activeUsers"] != $usn){
-            $activeUsers .= "<p onclick='printUSN(\"$usn\")'>$usn</p>";
+            $activeUsers .= "<p class='active-users' onclick='printUSN(\"$usn\")'>$usn</p>";
             // $activeUsers .= "<img class='user-img' src='$img'width='5px'/><p>$usn</p>";
         }
     }

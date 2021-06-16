@@ -56,6 +56,7 @@ if(isset($_SESSION['users'])){
             width: 400px;
         }
         #chat{
+            position: relative;
             background-color: white;
             height: 400px;
             width: 300px;
@@ -72,6 +73,24 @@ if(isset($_SESSION['users'])){
             top: 5px;
             right: 5px;
             color: white;
+        }
+        .active-users:hover{
+            cursor: pointer;
+        }
+        #chat-input{
+            position: absolute;
+            bottom: 0px;
+        }
+        .sender{
+            background-color: black;
+            color: white;
+        }
+        .receiver{
+            background-color: grey;
+            color: black;
+        }
+        #conversation{
+            overflow: scroll;
         }
     </style>
 </head>

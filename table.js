@@ -7,12 +7,51 @@ window.onload = function(){
     getActiveUsers();
 }
 
+d.getElementById("send-message").addEventListener('click', sendMessage);
+
+function sendMessage(e){
+    e.preventDefault();
+    // d.getElementById("conversation").innerHTML = d.getElementById("chat-message").value;
+    var xhr = new XMLHttpRequest();
+
+    var message = d.getElementById("chat-message").value;
+    var recipient = d.getElementById("name-header").innerHTML;
+
+    xhr.open("GET", "sendMessage.php?message="+message+"&recipient="+recipient, true);
+
+    xhr.onreadystatechange = function(){
+        if(this.readyState == 4 && this.status == 200){
+            d.getElementById("chat-message").value = null;
+            console.log(this.responseText);
+        }
+    }
+    xhr.send();
+}
+
 setInterval(function(){
     getActiveUsers();
 }, 3000);
 
+setInterval(function(){
+    getMessages();
+}, 1000);
+
+function getMessages(){
+    var xhr = new XMLHttpRequest();
+
+    var recipient = d.getElementById("name-header").innerHTML;
+
+    xhr.open("GET", "getMessages.php?recipient="+recipient, true);
+
+    xhr.onreadystatechange = function(){
+        if(this.readyState == 4 && this.status == 200){
+            d.getElementById("conversation").innerHTML = this.responseText;
+        }
+    }
+    xhr.send();
+}
+
 function printUSN(usn){
-    console.log("usn here "+usn);
     d.getElementById("chat").style.display = "block";
     d.getElementById("name-header").innerHTML = usn;
 }
