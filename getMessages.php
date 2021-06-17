@@ -21,12 +21,12 @@ foreach($messages as $message){
     if( $sender == $msgReceiver && $recipient == $msgSender ){
         $msgText = $message->getElementsByTagName("messageTxt")[0]->nodeValue;
         $msgDateTime = $message->getElementsByTagName("dateTime")[0]->nodeValue;
-        $html .= "<div class='receiver'>" . $msgText . "<br>" . $msgDateTime. "</div>";
+        $html .= "<br><div class='receiver'>" . $msgText . "<br><br><div class='dateTime'>" . $msgDateTime. "</div></div>";
     }
     if($sender == $msgSender  && $recipient == $msgReceiver){
         $msgText = $message->getElementsByTagName("messageTxt")[0]->nodeValue;
         $msgDateTime = $message->getElementsByTagName("dateTime")[0]->nodeValue;
-        $html .= "<div class='sender'>".$msgText . "<br>" . $msgDateTime. "</div>";
+        $html .= "<div class='sender'>".$msgText . "<br><br><div class='dateTime'>" . $msgDateTime. "</div></div>";
     }
 }
 echo $html;
