@@ -21,27 +21,41 @@ d.getElementById("uploadImageForm").addEventListener('submit', e => {
     
     const endpoint = "uploadImage.php";
     const formData = new FormData();
+               
+    var filePath = inpFile.value;
     
-    formData.append("inpFile", inpFile.files[0]);
-    
-    fetch(endpoint, {
-        method: "POST",
-        body: formData,
-    }).catch(console.error);
-    
-    // console.log(inpFile.files[0].name);
-    var xhr = new XMLHttpRequest();
-    
-    xhr.open("GET", "changeImage.php?fileName="+inpFile.files[0].name, true);
-    
-    xhr.onreadystatechange = function(){
-        if(this.readyState == 4 && this.status == 200){
-            // console.log(this.responseText);
-            d.getElementById("user-profilePic").src = this.responseText;
-            d.getElementById("uploadImageForm").style.display = "none";
+    // Allowing file type
+    // var allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
+    //idk why but some gifs causes GET error
+    var allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
+        
+    if (!allowedExtensions.exec(filePath)) {
+        alert('Invalid file type');
+        inpFile.value = '';
+        return false;
+    } else{
+        formData.append("inpFile", inpFile.files[0]);
+        
+        fetch(endpoint, {
+            method: "POST",
+            body: formData,
+        }).catch(console.error);
+        
+        // console.log(inpFile.files[0].name);
+        var xhr = new XMLHttpRequest();
+        
+        xhr.open("GET", "changeImage.php?fileName="+inpFile.files[0].name, true);
+        
+        xhr.onreadystatechange = function(){
+            if(this.readyState == 4 && this.status == 200){
+                // console.log(this.responseText);
+                d.getElementById("user-profilePic").src = this.responseText;
+                d.getElementById("uploadImageForm").style.display = "none";
+            }
         }
+        xhr.send();
     }
-    xhr.send();
+
 });
 
 function getImage(){
