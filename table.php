@@ -68,7 +68,7 @@ if(isset($_SESSION['users'])){
         }
         #chat{
             position: fixed;
-            background-color: white;
+            background-color: #f2f2f2;
             right: 17%;
             bottom: 0;
             height: 450px;
@@ -77,12 +77,15 @@ if(isset($_SESSION['users'])){
             display: none;
         }
         #name-header{
-            background-color: black;
-            color: white;
+            background-color: white;
+            color: black;
             width: 100%;
             height: 40px;
             border-top-left-radius: 7px;
             border-top-right-radius: 7px;
+        }
+        #name-container{
+            padding: 10px 15px;
         }
         #close-chat-button{
             position: relative;
@@ -96,6 +99,7 @@ if(isset($_SESSION['users'])){
         #chat-input{
             padding-top: 3.5%;
             padding-left: 4%;
+            background-color: white;
         }
         .sender{
             height: max-content;
@@ -103,12 +107,13 @@ if(isset($_SESSION['users'])){
             margin-left: auto;
             margin-right: 4%;
             margin-bottom: 5%;
-            background-color: purple;
-            border-top-right-radius: 7px;
-            border-top-left-radius: 7px;
-            border-bottom-left-radius: 7px;
-            padding: 2%;
+            background-color: #1b1209;
+            border-top-right-radius: 15px;
+            border-top-left-radius: 15px;
+            border-bottom-left-radius: 15px;
+            padding: 3%;
             color: white;
+            word-wrap: break-word;
             font-size: 14px;
         }
         .dateTime{
@@ -121,17 +126,20 @@ if(isset($_SESSION['users'])){
             margin-right: auto;
             margin-bottom: 5%;
             background-color: white;
-            border-top-right-radius: 7px;
-            border-top-left-radius: 7px;
-            border-bottom-right-radius: 7px;
+            color: black;
+            border-top-right-radius: 15px;
+            border-top-left-radius: 15px;
+            border-bottom-left-radius: 15px;
+            padding: 3%;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
             padding: 2%;
+            word-wrap: break-word;
             font-size: 14px;
         }
         #conversation{
             max-height: 340px;
             height: 100%;
-            box-shadow:inset 0px -4px 4px -3px rgba(0, 0, 0, 0.2);
+            box-shadow: inset 0px 11px 8px -10px #CCC, inset 0px -11px 8px -10px #CCC;;
             overflow: auto;
             padding-top: 7%;
         }
@@ -157,6 +165,12 @@ if(isset($_SESSION['users'])){
         #send-message:hover{
             background-color: black;
         }
+        #closeBtn{
+            margin-left: 75%;
+            cursor: pointer;
+            font-weight: bolder;
+            font-size: 18px;
+        }
     </style>
 </head>
 <body >
@@ -169,7 +183,9 @@ if(isset($_SESSION['users'])){
         <div id="user-panel"></div>
         <div id="chat">
             <div id="name-header">
+                <div id="name-container">
                 <!-- <div id="close-chat-button">&times;</div> -->
+                </div>
             </div>
             <div id="conversation"></div>
             <div id="chat-input">
