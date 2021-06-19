@@ -36,14 +36,39 @@ tr:nth-child(even){
     margin-bottom: 5%;
 }
 #logout{
+    position: absolute;
+    top: 5;
+    right: 0;
     padding: 10px 15px;
-    margin-left: 93%;
+    /* margin-left: 93%; */
+    background-color: #9197cf;
+    color: white;
+    border-radius: 1em;
+    font-size: 15px;
+    border: none;
+    
+}
+#changeDP{
+    position: absolute;
+    top: 5;
+    right: 0;
+    padding: 10px 15px;
+    margin-right: 100px;
     background-color: #9197cf;
     color: white;
     border-radius: 1em;
     font-size: 15px;
     border: none;
 }
+/* #logout{
+    padding: 10px 15px;
+    margin-left: 50%;
+    background-color: #9197cf;
+    color: white;
+    border-radius: 1em;
+    font-size: 15px;
+    border: none;
+} */
 #bside{
     display: inline-block;
 }

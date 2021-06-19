@@ -27,7 +27,7 @@ foreach($users as $user){
 
         $xml->getElementsByTagName("users")[0]->replaceChild($newNode, $user);
         $xml->save("users.xml");
-        echo "images\/".$fileName;
+        echo "images/".$fileName;
         // changeImagePath($user);
         break;
     }

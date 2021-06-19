@@ -3,6 +3,7 @@ session_start();
 date_default_timezone_set("Asia/Manila");
 $msg = $_GET["message"];
 $recipient = $_GET["recipient"];
+$receiver = $_SESSION['receiver'];
 
 $sender = $_SESSION['activeUsers'];
 
@@ -19,7 +20,7 @@ $messageTxt = $xml->createElement("messageTxt", $msg);
 $messageDateTime = $xml->createElement("dateTime", $dateTime);
 
 $message->setAttribute("sender", $sender);
-$message->setAttribute("receiver", $recipient);
+$message->setAttribute("receiver", $receiver);
 $message->appendChild($messageTxt);
 $message->appendChild($messageDateTime);
 

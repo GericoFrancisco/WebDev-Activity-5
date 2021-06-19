@@ -52,6 +52,7 @@ if(isset($_SESSION['users'])){
             vertical-align: top;
         }
         #user-panel{
+            /* display: none; */
             position: fixed;
             background-color: white;
             height: 100%;
@@ -166,26 +167,47 @@ if(isset($_SESSION['users'])){
             background-color: black;
         }
         #closeBtn{
-            margin-left: 75%;
+            position: relative;
+            float: right;
             cursor: pointer;
-            font-weight: bolder;
-            font-size: 18px;
+        }
         #uploadImageForm{
             display: none;
+            position: absolute;
+            right: 0;
+            margin-right: 20px;
+            background-color: black;
+            color: white;
+            border-radius: 5px;
+            z-index: 900;
         }
         #user-profilePic{
             height: 50px;
             width: 50px;
         }
+        #closeForm{
+            position: relative;
+            float: right;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        #user-image-panel{
+            color: white;
+            font-size: 20px;
+            vertical-align: center;
+        }
+
     </style>
 </head>
 <body >
     <div id="header">
         <span id="user-image-panel"></span>
         <form class="uploadImage" id="uploadImageForm">
-            <input type="file" id="inpFile"> <br>
+            <input type="file" id="inpFile">
+            <span id="closeForm" onclick="closeForm();">x</span><br>
             <button type="submit">Upload Image</button>
         </form>
+        <button id="changeDP" onclick='showUploadForm()' >Change Profile Picture</button>
         <button id="logout" >Log Out</button>
     </div>
     <div id="modal"></div>

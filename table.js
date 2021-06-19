@@ -1,6 +1,9 @@
 var d = document;
 
+var chatOpen = false;
+
 d.getElementById('logout').addEventListener('click', logOutFunc);
+
 
 window.onload = function(){
     getData();
@@ -11,7 +14,6 @@ window.onload = function(){
 
 function showUploadForm(){
     d.getElementById("uploadImageForm").style.display = "block";
-    console.log("clicked");
 }
 
 d.getElementById("uploadImageForm").addEventListener('submit', e => {
@@ -21,14 +23,14 @@ d.getElementById("uploadImageForm").addEventListener('submit', e => {
     
     const endpoint = "uploadImage.php";
     const formData = new FormData();
-               
+    
     var filePath = inpFile.value;
     
     // Allowing file type
     // var allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
     //idk why but some gifs causes GET error
     var allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
-        
+    
     if (!allowedExtensions.exec(filePath)) {
         alert('Invalid file type');
         inpFile.value = '';
@@ -55,14 +57,14 @@ d.getElementById("uploadImageForm").addEventListener('submit', e => {
         }
         xhr.send();
     }
-
+    
 });
 
 function getImage(){
     var xhr = new XMLHttpRequest();
-
+    
     xhr.open("GET", "getImage.php", true);
-
+    
     xhr.onreadystatechange = function(){
         if(this.readyState == 4 && this.status == 200){
             d.getElementById("user-image-panel").innerHTML = this.responseText;
@@ -78,12 +80,12 @@ function sendMessage(e){
     e.preventDefault();
     // d.getElementById("conversation").innerHTML = d.getElementById("chat-message").value;
     var xhr = new XMLHttpRequest();
-
+    
     var message = d.getElementById("chat-message").value;
-    var recipient = d.getElementById("name-container").innerHTML;
-
+    var recipient = d.getElementById("usn-holder").innerHTML;
+    
     xhr.open("GET", "sendMessage.php?message="+message+"&recipient="+recipient, true);
-
+    
     xhr.onreadystatechange = function(){
         if(this.readyState == 4 && this.status == 200){
             d.getElementById("chat-message").value = null;
@@ -97,17 +99,21 @@ setInterval(function(){
     getActiveUsers();
 }, 3000);
 
+setInterval(function() {
+    var elem = document.getElementById('conversation');
+    elem.scrollTop = elem.scrollHeight;
+}, 500);
+
 setInterval(function(){
-    getMessages();
+    if(chatOpen) getMessages();
 }, 1000);
 
 function getMessages(){
     var xhr = new XMLHttpRequest();
-
-    var recipient = d.getElementById("name-container").innerHTML;
-
+    var recipient = d.getElementById("usn-holder").innerHTML;
+    
     xhr.open("GET", "getMessages.php?recipient="+recipient, true);
-
+    
     xhr.onreadystatechange = function(){
         if(this.readyState == 4 && this.status == 200){
             d.getElementById("conversation").innerHTML = this.responseText;
@@ -117,13 +123,29 @@ function getMessages(){
 }
 
 function printUSN(usn){
-    html = " ";
-    html += usn + '<label id="closeBtn" onclick="closeChat()">&times;</label>';
+    chatOpen = true;
     d.getElementById("chat").style.display = "block";
-    d.getElementById("name-container").innerHTML = html;
+
+    var xhr = new XMLHttpRequest();
+
+    xhr.open("GET", "setReceiver.php?recipient="+usn, true);
+
+    xhr.onreadystatechange = function(){
+        if(this.readyState == 4 && this.status == 200){
+            console.log("I get id "+this.responseText);
+            d.getElementById("name-container").innerHTML = "<span id='usn-holder'>"+this.responseText+"</span><span id='closeBtn' onclick='closeChat();'>x</span>";;
+        }
+    }
+    xhr.send();
+
+}
+
+function closeForm(){
+    d.getElementById("uploadImageForm").style.display = "none";
 }
 
 function closeChat(){
+    chatOpen = false;
     d.getElementById("chat").style.display = "none";
 }
 

@@ -12,8 +12,9 @@ $html = "";
 foreach($users as $user){
     $usn = $user->getAttribute("username");
     if($usn == $activeUser){
+        $name = $user->getElementsByTagName("firstName")[0]->nodeValue. " " . $user->getElementsByTagName("lastName")[0]->nodeValue;
         $img = $user->getElementsByTagName("profilePic")[0]->nodeValue;
-        $html .= "<img src='$img' id='user-profilePic' onclick='showUploadForm()'>".$activeUser;
+        $html .= "<img src='$img' id='user-profilePic' >".$name;
     }
 }
 echo $html;
