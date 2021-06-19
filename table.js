@@ -15,7 +15,7 @@ function sendMessage(e){
     var xhr = new XMLHttpRequest();
 
     var message = d.getElementById("chat-message").value;
-    var recipient = d.getElementById("name-header").innerHTML;
+    var recipient = d.getElementById("name-container").innerHTML;
 
     xhr.open("GET", "sendMessage.php?message="+message+"&recipient="+recipient, true);
 
@@ -39,7 +39,7 @@ setInterval(function(){
 function getMessages(){
     var xhr = new XMLHttpRequest();
 
-    var recipient = d.getElementById("name-header").innerHTML;
+    var recipient = d.getElementById("name-container").innerHTML;
 
     xhr.open("GET", "getMessages.php?recipient="+recipient, true);
 
@@ -52,8 +52,14 @@ function getMessages(){
 }
 
 function printUSN(usn){
+    html = " ";
+    html += usn + '<label id="closeBtn" onclick="closeChat()">&times;</label>';
     d.getElementById("chat").style.display = "block";
-    d.getElementById("name-header").innerHTML = usn;
+    d.getElementById("name-container").innerHTML = html;
+}
+
+function closeChat(){
+    d.getElementById("chat").style.display = "none";
 }
 
 function getActiveUsers(){
