@@ -4,8 +4,73 @@ d.getElementById('logout').addEventListener('click', logOutFunc);
 
 window.onload = function(){
     getData();
+    getImage();
     getActiveUsers();
 }
+
+
+function showUploadForm(){
+    d.getElementById("uploadImageForm").style.display = "block";
+    console.log("clicked");
+}
+
+d.getElementById("uploadImageForm").addEventListener('submit', e => {
+    e.preventDefault();
+    const myForm = d.getElementById("uploadImageForm");
+    const inpFile = d.getElementById("inpFile");
+    
+    const endpoint = "uploadImage.php";
+    const formData = new FormData();
+               
+    var filePath = inpFile.value;
+    
+    // Allowing file type
+    // var allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
+    //idk why but some gifs causes GET error
+    var allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
+        
+    if (!allowedExtensions.exec(filePath)) {
+        alert('Invalid file type');
+        inpFile.value = '';
+        return false;
+    } else{
+        formData.append("inpFile", inpFile.files[0]);
+        
+        fetch(endpoint, {
+            method: "POST",
+            body: formData,
+        }).catch(console.error);
+        
+        // console.log(inpFile.files[0].name);
+        var xhr = new XMLHttpRequest();
+        
+        xhr.open("GET", "changeImage.php?fileName="+inpFile.files[0].name, true);
+        
+        xhr.onreadystatechange = function(){
+            if(this.readyState == 4 && this.status == 200){
+                // console.log(this.responseText);
+                d.getElementById("user-profilePic").src = this.responseText;
+                d.getElementById("uploadImageForm").style.display = "none";
+            }
+        }
+        xhr.send();
+    }
+
+});
+
+function getImage(){
+    var xhr = new XMLHttpRequest();
+
+    xhr.open("GET", "getImage.php", true);
+
+    xhr.onreadystatechange = function(){
+        if(this.readyState == 4 && this.status == 200){
+            d.getElementById("user-image-panel").innerHTML = this.responseText;
+        }
+    }
+    xhr.send();
+}
+
 
 d.getElementById("send-message").addEventListener('click', sendMessage);
 
@@ -22,7 +87,7 @@ function sendMessage(e){
     xhr.onreadystatechange = function(){
         if(this.readyState == 4 && this.status == 200){
             d.getElementById("chat-message").value = null;
-            console.log(this.responseText);
+            // console.log(this.responseText);
         }
     }
     xhr.send();

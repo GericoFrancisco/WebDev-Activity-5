@@ -170,11 +170,22 @@ if(isset($_SESSION['users'])){
             cursor: pointer;
             font-weight: bolder;
             font-size: 18px;
+        #uploadImageForm{
+            display: none;
+        }
+        #user-profilePic{
+            height: 50px;
+            width: 50px;
         }
     </style>
 </head>
 <body >
     <div id="header">
+        <span id="user-image-panel"></span>
+        <form class="uploadImage" id="uploadImageForm">
+            <input type="file" id="inpFile"> <br>
+            <button type="submit">Upload Image</button>
+        </form>
         <button id="logout" >Log Out</button>
     </div>
     <div id="modal"></div>
