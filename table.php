@@ -54,22 +54,24 @@ if(isset($_SESSION['users'])){
         #user-panel{
             /* display: none; */
             position: fixed;
-            background-color: white;
-            height: 100%;
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
+            height: 95%;
             width: 15%;
             right: 0;
-            top: 8%;
+            top: 7%;
+            overflow: auto;
         }
         .user-img, .active-users{
             display: inline-block;
             vertical-align: middle;
         }
         .user-img{
-            width: 10%;
+            width: 11%;
+            margin-left: 5%;
         }
         #chat{
             position: fixed;
-            background-color: #f2f2f2;
+            background-color: rgb(226, 226, 226);
             right: 17%;
             bottom: 0;
             height: 450px;
@@ -78,8 +80,8 @@ if(isset($_SESSION['users'])){
             display: none;
         }
         #name-header{
-            background-color: white;
-            color: black;
+            background-color: #1A1C20;
+            color: white;
             width: 100%;
             height: 40px;
             border-top-left-radius: 7px;
@@ -100,15 +102,16 @@ if(isset($_SESSION['users'])){
         #chat-input{
             padding-top: 3.5%;
             padding-left: 4%;
-            background-color: white;
+            background-color: #1A1C20;
+            height: 40px;
         }
         .sender{
             height: max-content;
             width: 45%;
             margin-left: auto;
             margin-right: 4%;
-            margin-bottom: 5%;
-            background-color: #1b1209;
+            margin-bottom: 4%;
+            background-color: #222831;
             border-top-right-radius: 15px;
             border-top-left-radius: 15px;
             border-bottom-left-radius: 15px;
@@ -125,15 +128,14 @@ if(isset($_SESSION['users'])){
             width: 45%;
             margin-left: 4%;
             margin-right: auto;
-            margin-bottom: 5%;
+            margin-bottom: 4%;
             background-color: white;
             color: black;
             border-top-right-radius: 15px;
             border-top-left-radius: 15px;
-            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
             padding: 3%;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-            padding: 2%;
             word-wrap: break-word;
             font-size: 14px;
         }
@@ -161,10 +163,10 @@ if(isset($_SESSION['users'])){
             border-bottom-right-radius: 5px;
             vertical-align: top;
             border: none;
-            background-color: gray;
+            background-color: #b1b0b0;
         }
         #send-message:hover{
-            background-color: black;
+            background-color: #E8E8E8;
         }
         #closeBtn{
             position: relative;
@@ -175,15 +177,15 @@ if(isset($_SESSION['users'])){
             display: none;
             position: absolute;
             right: 0;
-            margin-right: 20px;
-            background-color: black;
+            margin-right: 5%;
+            margin-top: 0.5%;
+            background-color: rgb(43, 43, 43);
             color: white;
             border-radius: 5px;
             z-index: 900;
         }
         #user-profilePic{
-            height: 50px;
-            width: 50px;
+            width: 5%;
         }
         #closeForm{
             position: relative;
@@ -194,9 +196,11 @@ if(isset($_SESSION['users'])){
         #user-image-panel{
             color: white;
             font-size: 20px;
-            vertical-align: center;
         }
-
+        #user-profilePic, #user-image-panel{
+            display: inline-block;
+            vertical-align: middle;
+        }
     </style>
 </head>
 <body >

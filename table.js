@@ -97,7 +97,7 @@ function sendMessage(e){
 
 setInterval(function(){
     getActiveUsers();
-}, 3000);
+}, 1000);
 
 setInterval(function() {
     var elem = document.getElementById('conversation');
