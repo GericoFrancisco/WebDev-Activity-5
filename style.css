@@ -34,6 +34,7 @@ tr:nth-child(even){
     background-color: rgb(43, 43, 43);
     padding: 10px;
     margin-bottom: 5%;
+    height: 5vh;
 }
 #logout{
     position: absolute;
